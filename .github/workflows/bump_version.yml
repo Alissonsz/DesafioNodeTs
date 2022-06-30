@@ -24,7 +24,7 @@ jobs:
         with:
           tag-prefix: 'v'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.COMMIT_KEY }}
       - name: 'cat package.json'
         run: cat ./package.json
       - name: 'Output Step'
