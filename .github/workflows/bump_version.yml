@@ -19,5 +19,5 @@ jobs:
       - run: npm version patch -m "v%s"
       - run: VERSION=$(node -p "require('./package.json').version")
       - run: git tag ${VERSION}
-      - run: git push "https://$GITHUB_ACTOR:${{ secrets.COMMIT_KEY }}@github.com/$GITHUB_REPOSITORY.git" --follow-tags
-      - run: git push "https://$GITHUB_ACTOR:${{ secrets.COMMIT_KEY }}@github.com/$GITHUB_REPOSITORY.git" --tags
+      - run: git push --follow-tags
+      - run: git push --tags
