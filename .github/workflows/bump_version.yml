@@ -9,6 +9,7 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip-ci')"
     steps:
       - uses: actions/checkout@v2
         with:
@@ -16,7 +17,7 @@ jobs:
           ref: ${{ github.ref }}
       - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - run: git config user.name "$GITHUB_ACTOR"
-      - run: npm version patch -m "v%s"
+      - run: npm version patch -m "skip-ci v%s"
       - run: VERSION=$(node -p "require('./package.json').version")
       - run: git tag ${VERSION}
       - run: git push --follow-tags
