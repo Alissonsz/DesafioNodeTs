@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: Alissonsz/videoParty
+          repository: alissonsz/testspracticing
           ssh-key: ${{ secrets.GITHUB_SECRET }}
       - name: Check latest track-extension release
         id: latestbuttonrelease
