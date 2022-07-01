@@ -22,7 +22,7 @@ jobs:
           repo: https://github.com/toggl/track-extension.git
       - name: Show latest track-extension tag
         run: |
-          echo "Latest release: ${{ steps.latestbuttonrelease.tag }}""
+          echo "Latest release: ${{ steps.latestbuttonrelease.tag }}"
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
