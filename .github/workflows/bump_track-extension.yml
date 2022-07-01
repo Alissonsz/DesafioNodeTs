@@ -21,8 +21,8 @@ jobs:
       - run: git config user.name "$GITHUB_ACTOR"
       - run: yarn add @toggl/track-extension@toggl/track-extension#${{ steps.latestbuttonrelease.outputs.tag }}
       - name: Open pull request
-        uses: peter-evans/create-pull-request@v4
+        uses: paygoc6/action-pull-request-another-repo@v1.0.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.OTHER_REPO_TOKEN }}
         with:
-          title: Bump track-extension version to ${{ steps.latestbuttonrelease.outputs.tag }}
-          path: git@github.com:Alissonsz/testspracticing.git
-          token: ${{ secrets.OTHER_REPO_TOKEN }}
+          destination_repo: alissonsz/testspracticing
