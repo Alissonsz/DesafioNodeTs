@@ -15,14 +15,6 @@ jobs:
       - name: Configure release version
         run: |
           echo "VERSION=$(echo ${{ github.ref }} | sed -e 's/^refs\/tags\///')" >> $GITHUB_ENV
-      - name: Check latest track-extension release
-        id: latestbuttonrelease
-        uses: tdemin/find-latest-tag@v1
-        with:
-          repo: https://github.com/toggl/track-extension.git
-      - name: Show latest track-extension tag
-        run: |
-          echo "Latest release: ${{ steps.latestbuttonrelease.outputs.tag }}"
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
