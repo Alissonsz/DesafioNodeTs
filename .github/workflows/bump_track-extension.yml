@@ -24,4 +24,5 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           title: Bump track-extension version to ${{ steps.latestbuttonrelease.outputs.tag }}
+          path: git@github.com:Alissonsz/testspracticing.git
           token: ${{ secrets.OTHER_REPO_TOKEN }}
