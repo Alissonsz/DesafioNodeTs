@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
-          repository: alissonsz/testspracticing
           ssh-key: ${{ secrets.GITHUB_SECRET }}
+          ref: ${{ github.ref }}
       - name: Check latest track-extension release
         id: latestbuttonrelease
         uses: tdemin/find-latest-tag@v1
@@ -19,10 +19,8 @@ jobs:
           repo: https://github.com/toggl/track-extension.git
       - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - run: git config user.name "$GITHUB_ACTOR"
-      - run: yarn add @toggl/track-extension@toggl/track-extension#${{ steps.latestbuttonrelease.outputs.tag }}
+      - run: yarn upgrade @toggl/track-extension@toggl/track-extension#${{ steps.latestbuttonrelease.outputs.tag }}
       - name: Open pull request
-        uses: paygoc6/action-pull-request-another-repo@v1.0.1
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.OTHER_REPO_TOKEN }}
+        uses: peter-evans/create-pull-request@v4
         with:
-          destination_repo: alissonsz/testspracticing
+          title: Bump track-extension version to ${{ steps.latestbuttonrelease.outputs.tag }}
