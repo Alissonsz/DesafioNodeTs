@@ -443,9 +443,9 @@
   dependencies:
     type-detect "4.0.8"
 
-"@toggl/track-extension@toggl/track-extension#v2.0.10":
-  version "2.0.8"
-  resolved "https://codeload.github.com/toggl/track-extension/tar.gz/a5d76a3b11c151fc281a7c303f7cc88214b889b4"
+"@toggl/track-extension@toggl/track-extension#v2.0.14":
+  version "2.0.14"
+  resolved "https://codeload.github.com/toggl/track-extension/tar.gz/44cef585d1cc71d23ac139dbbb9119852ec70fd6"
 
 "@types/babel__core@^7.1.7":
   version "7.1.7"
