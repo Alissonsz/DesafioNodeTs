@@ -1,7 +1,6 @@
 name: Create Release
 
-on:
-  workflow_dispatch:
+on:workflow_dispatch:
   push:
     tags:
       - v*
@@ -15,6 +14,11 @@ jobs:
       - name: Configure release version
         run: |
           echo "VERSION=$(echo ${{ github.ref }} | sed -e 's/^refs\/tags\///')" >> $GITHUB_ENV
+      - name: Check latest track-extension release
+        run: |
+          echo "::set-output name=description::$(gh release view --repo <owner/repo>)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
