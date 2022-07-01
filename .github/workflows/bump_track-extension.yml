@@ -25,3 +25,4 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           title: Bump track-extension version to ${{ steps.latestbuttonrelease.outputs.tag }}
+          token: ${{ secrets.OTHER_REPO_TOKEN }}
