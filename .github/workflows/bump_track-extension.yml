@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          name: Alissonsz/videoParty
           ssh-key: ${{ secrets.GITHUB_SECRET }}
           ref: ${{ github.ref }}
       - name: Check latest track-extension release
@@ -19,7 +20,7 @@ jobs:
           repo: https://github.com/toggl/track-extension.git
       - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - run: git config user.name "$GITHUB_ACTOR"
-      - run: yarn upgrade @toggl/track-extension@toggl/track-extension#${{ steps.latestbuttonrelease.outputs.tag }}
+      - run: yarn && yarn add @toggl/track-extension@toggl/track-extension#${{ steps.latestbuttonrelease.outputs.tag }}
       - name: Open pull request
         uses: peter-evans/create-pull-request@v4
         with:
