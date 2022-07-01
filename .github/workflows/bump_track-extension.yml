@@ -12,7 +12,6 @@ jobs:
         with:
           repository: Alissonsz/videoParty
           ssh-key: ${{ secrets.OTHER_REPO_TOKEN }}
-          ref: ${{ github.ref }}
       - name: Check latest track-extension release
         id: latestbuttonrelease
         uses: tdemin/find-latest-tag@v1
