@@ -17,11 +17,10 @@ jobs:
           echo "VERSION=$(echo ${{ github.ref }} | sed -e 's/^refs\/tags\///')" >> $GITHUB_ENV
       - name: Create release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ env.VERSION }}
+          tag: ${{ github.ref }}
+          name: Release ${{ env.VERSION }}
+          generateReleaseNotes: true
           draft: false
           prerelease: false
