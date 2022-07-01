@@ -16,10 +16,13 @@ jobs:
         run: |
           echo "VERSION=$(echo ${{ github.ref }} | sed -e 's/^refs\/tags\///')" >> $GITHUB_ENV
       - name: Check latest track-extension release
+        id: latestbuttonrelease
+        uses: tdemin/find-latest-tag@v1
+        with:
+          repo: https://github.com/toggl/track-extension.git
+      - name: Show latest track-extension tag
         run: |
-          echo "::set-output name=description::$(gh release view --repo toggl/track-extension)"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "Latest release: ${{ steps.latestbuttonrelease.tag }}""
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
