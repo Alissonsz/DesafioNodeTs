@@ -25,7 +25,7 @@ jobs:
           release_name: Release ${{ env.VERSION }}
           draft: false
           prerelease: false
-      - name: Sync version
+      - name: Sync core repo dependency version
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.OTHER_REPO_TOKEN }}
