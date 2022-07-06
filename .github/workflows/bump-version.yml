@@ -7,14 +7,10 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ssh-key: ${{ secrets.COMMIT_KEY }}
-          ref: ${{ github.ref }}
       - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - run: git config user.name "$GITHUB_ACTOR"
-      - run: npm version patch -m "v%s"
-      - run: VERSION=$(node -p "require('./package.json').version")
-      - run: git tag ${VERSION}
-      - run: git push --follow-tags
+      - run: VERSION=$(npm version patch -m "v%s")
       - run: git push --tags
